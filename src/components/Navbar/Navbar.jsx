@@ -1,16 +1,43 @@
 import React, { useState, useEffect } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
+  const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const menuItems = [
+    { id: "home", label: "Home" },
+    { id: "about", label: "About" },
+    { id: "skills", label: "Skills" },
+    { id: "experience", label: "Experience" },
+    { id: "work", label: "Projects" },
+    { id: "education", label: "Education" },
+  ];
 
   // Detect scroll and change navbar background
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+
+      // Scrollspy logic
+      menuItems.forEach((item) => {
+        const section = document.getElementById(item.id);
+        if (section) {
+          const top = section.offsetTop - 50; // slightly smaller offset
+          const bottom = top + section.offsetHeight;
+          if (
+            item.id === "home" &&
+            window.scrollY < top + section.offsetHeight
+          ) {
+            setActiveSection("home");
+          } else if (window.scrollY >= top && window.scrollY < bottom) {
+            setActiveSection(item.id);
+          }
+        }
+      });
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -27,14 +54,6 @@ const Navbar = () => {
       section.scrollIntoView({ behavior: "smooth" });
     }
   };
-
-  const menuItems = [
-    { id: "about", label: "About" },
-    { id: "skills", label: "Skills" },
-    { id: "experience", label: "Experience" },
-    { id: "work", label: "Projects" },
-    { id: "education", label: "Education" },
-  ];
 
   return (
     <nav
@@ -73,7 +92,7 @@ const Navbar = () => {
         {/* Social Icons */}
         <div className="hidden md:flex space-x-4">
           <a
-            href="https://github.com/AnkitKeshri018"
+            href="https://github.com/KeshriDev018"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-300 hover:text-[#8245ec]"
@@ -87,6 +106,14 @@ const Navbar = () => {
             className="text-gray-300 hover:text-[#8245ec]"
           >
             <FaLinkedin size={24} />
+          </a>
+          <a
+            href="https://leetcode.com/u/Ankit_Keshri7654/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-300 hover:text-[#8245ec]"
+          >
+            <SiLeetcode size={24} />
           </a>
         </div>
 
@@ -124,7 +151,7 @@ const Navbar = () => {
             ))}
             <div className="flex space-x-4">
               <a
-                href="https://github.com/AnkitKeshri018"
+                href="https://github.com/KeshriDev018"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-300 hover:text-white"
@@ -138,6 +165,14 @@ const Navbar = () => {
                 className="text-gray-300 hover:text-white"
               >
                 <FaLinkedin size={24} />
+              </a>
+              <a
+                href="https://leetcode.com/u/Ankit_Keshri7654/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-white"
+              >
+                <SiLeetcode size={24} />
               </a>
             </div>
           </ul>

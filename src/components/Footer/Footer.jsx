@@ -1,5 +1,13 @@
 import React from "react";
-import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaYoutube } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaTwitter,
+  FaLinkedin,
+  FaInstagram,
+  FaYoutube,
+  FaGithub,
+} from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
 
 const Footer = () => {
   // Smooth scroll function
@@ -43,8 +51,16 @@ const Footer = () => {
               link: "https://www.facebook.com/ankit.keshri.5855594",
             },
             {
+              icon: <FaGithub />,
+              link: "https://github.com/KeshriDev018",
+            },
+            {
               icon: <FaLinkedin />,
               link: "https://www.linkedin.com/in/ankit-keshri-0150b12ba/",
+            },
+            {
+              icon: <SiLeetcode />,
+              link: "https://leetcode.com/u/Ankit_Keshri7654/",
             },
             {
               icon: <FaInstagram />,

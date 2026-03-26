@@ -113,22 +113,27 @@ const Work = () => {
 
               {/* Buttons */}
               <div className="flex gap-4 w-full justify-center">
-                <a
-                  href={selectedProject.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-gray-800 hover:bg-purple-800 text-gray-400 px-6 py-2 rounded-xl text-sm font-semibold text-center"
-                >
-                  View Code
-                </a>
-                <a
-                  href={selectedProject.webapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-purple-600 hover:bg-purple-800 text-white px-6 py-2 rounded-xl text-sm font-semibold text-center"
-                >
-                  View Live
-                </a>
+                {selectedProject.github && (
+                  <a
+                    href={selectedProject.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-gray-800 hover:bg-purple-800 text-gray-400 px-6 py-2 rounded-xl text-sm font-semibold text-center"
+                  >
+                    View Code
+                  </a>
+                )}
+                {selectedProject.webapp &&
+                  selectedProject.webapp !== "https://github.com" && (
+                    <a
+                      href={selectedProject.webapp}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-purple-600 hover:bg-purple-800 text-white px-6 py-2 rounded-xl text-sm font-semibold text-center"
+                    >
+                      View Live
+                    </a>
+                  )}
               </div>
             </div>
           </div>
